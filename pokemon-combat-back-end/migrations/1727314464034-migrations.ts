@@ -4,6 +4,7 @@ import * as path from 'path'
 
 export class Migrations1727314464034 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createDatabase("PokemonDatabase.db")
         await queryRunner.createTable(
             new Table({
                 name: 'pokemons',
