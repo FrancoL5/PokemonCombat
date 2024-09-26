@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Pokemons } from './pokemon.entity'
 import { Repository } from 'typeorm'
+import { SimulateCombatDTO } from './dto/simulateCombat.dto'
 
 @Injectable()
 export class PokemonsService {
@@ -11,6 +12,15 @@ export class PokemonsService {
     ) {}
 
     async findAll() {
-        return await this.pokemonsRepository.find()
+        return await this.pokemonsRepository.find({
+            relations: { combatsWon: true, combatsLosse: true },
+        })
+    }
+
+    async simulateCombat(pokemonsIDs: SimulateCombatDTO) {
+        const [playerPokemon, rivalPokemon]= await this.pokemonsRepository
+            .createQueryBuilder()
+            .where('pokemons.id = :playerID OR pokemons.id = :rivalID')
+            .getMany()
     }
 }

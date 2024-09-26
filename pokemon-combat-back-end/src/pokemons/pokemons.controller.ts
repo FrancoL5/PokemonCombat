@@ -1,15 +1,19 @@
-import { Controller, Get } from '@nestjs/common'
+import { Body, Controller, Get, Post } from '@nestjs/common'
 import { PokemonsService } from './pokemons.service'
-import * as fs from 'fs/promises'
-import * as path from 'path'
+import { SimulateCombatDTO } from './dto/simulateCombat.dto'
+
 @Controller('pokemons')
 export class PokemonsController {
     constructor(private pokemonsService: PokemonsService) {}
+
     @Get('getAll')
     async getAll() {
-        const { pokemon } = JSON.parse(
-            await fs.readFile(path.resolve('..', 'pokemon.json'), 'utf-8'),
-        )
         return this.pokemonsService.findAll()
+    }
+
+
+    @Post('simulateCombat')
+    async simulateCombat(@Body() body: SimulateCombatDTO) {
+
     }
 }

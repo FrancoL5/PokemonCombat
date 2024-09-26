@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { CombatTracker } from '../combat-tracker/combatTracker.entity'
 
 @Entity()
 export class Pokemons {
@@ -25,4 +26,10 @@ export class Pokemons {
 
     @Column()
     imageUrl: string
+
+    @OneToMany(() => CombatTracker, (combat) => combat.winner)
+    combatsWon: CombatTracker[]
+
+    @OneToMany(() => CombatTracker, (combat) => combat.losser)
+    combatsLosse: CombatTracker[]
 }
