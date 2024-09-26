@@ -10,7 +10,6 @@ export class PokemonsController {
         const { pokemon } = JSON.parse(
             await fs.readFile(path.resolve('..', 'pokemon.json'), 'utf-8'),
         )
-        console.log(pokemon)
         return this.pokemonsService.findAll()
     }
 }
