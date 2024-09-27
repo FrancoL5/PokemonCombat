@@ -6,5 +6,6 @@ import { CombatTracker } from './combatTracker.entity'
 @Module({
     imports: [TypeOrmModule.forFeature([CombatTracker])],
     providers: [CombatTrackerService],
+    exports: [CombatTrackerService],
 })
 export class CombatTrackerModule {}

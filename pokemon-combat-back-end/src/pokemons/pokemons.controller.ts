@@ -14,6 +14,6 @@ export class PokemonsController {
 
     @Post('simulateCombat')
     async simulateCombat(@Body() body: SimulateCombatDTO) {
-
+        return this.pokemonsService.simulateCombat(body)
     }
 }

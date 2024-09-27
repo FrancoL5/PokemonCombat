@@ -16,7 +16,7 @@ export class Migrations1727314464034 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'int',
+                        type: 'integer',
                         isPrimary: true,
                     },
                     {
@@ -25,19 +25,19 @@ export class Migrations1727314464034 implements MigrationInterface {
                     },
                     {
                         name: 'attack',
-                        type: 'int',
+                        type: 'integer',
                     },
                     {
                         name: 'hp',
-                        type: 'int',
+                        type: 'integer',
                     },
                     {
                         name: 'defense',
-                        type: 'int',
+                        type: 'integer',
                     },
                     {
                         name: 'speed',
-                        type: 'int',
+                        type: 'integer',
                     },
                     {
                         name: 'type',
@@ -59,12 +59,18 @@ export class Migrations1727314464034 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'int',
+                        type: 'integer',
                         isPrimary: true,
                         isGenerated: true,
+                        generationStrategy: 'increment',
                     },
-                    { name: 'winnerId', type: 'int' },
-                    { name: 'losserId', type: 'int' },
+                    { name: 'winnerId', type: 'integer' },
+                    { name: 'losserId', type: 'integer' },
+                    {
+                        name: 'createdAt',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP',
+                    },
                 ],
             }),
         )
