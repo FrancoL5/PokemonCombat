@@ -1,13 +1,20 @@
 import { Box, Card, CardContent, Tooltip } from '@mui/material'
 import { Pokemon } from '../interfaces/pokemons'
 
-export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
+export function PokemonCard({
+    pokemon,
+    selectPokemon,
+}: {
+    pokemon: Pokemon
+    selectPokemon: (pokemon: Pokemon) => void
+}) {
     return (
         <Card
             sx={{
                 width: '10rem',
                 cursor: 'pointer',
             }}
+            onClick={() => selectPokemon(pokemon)}
         >
             <Box
                 sx={{
@@ -39,7 +46,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
                         alignSelf: 'start',
                     }}
                 >
-                    {pokemon.name}
+                    <b>{pokemon.name}</b>
                 </p>
             </Box>
         </Card>
