@@ -5,7 +5,7 @@ export function usePokemonHttp() {
         getAllPokemons: async () => {
             try {
                 const response = await fetch(
-                    'http://localhost:3000/pokemons/getAll',
+                    import.meta.env.VITE_SERVER_URL + '/pokemons/getAll',
                 )
                 return (await response.json()) as Pokemon[]
             } catch (err) {
@@ -15,7 +15,7 @@ export function usePokemonHttp() {
         simulateCombat: async (pokemonPlayerID: number, rivalID: number) => {
             try {
                 const response = await fetch(
-                    'http://localhost:3000/pokemons/simulateCombat',
+                    import.meta.env.VITE_SERVER_URL + '/pokemons/simulateCombat',
                     {
                         method: 'POST',
                         headers: {

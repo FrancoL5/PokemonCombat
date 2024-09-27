@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Tooltip } from '@mui/material'
+import { Box, Card, Tooltip } from '@mui/material'
 import { Pokemon } from '../interfaces/pokemons'
 
 export function PokemonCard({
